@@ -56,14 +56,18 @@ public class Program {
        
        System.out.println();
        for(int i = 1; i <= round; i++){
-           System.out.println("Final Result round "+ i + ":");
-           System.out.println(c1.status());
-           System.out.println(c2.status());
+            System.out.println("Final Result round "+ i + ":");
+            System.out.println(c1.status());
+            System.out.println(c2.status());
            
-           System.out.println("");
-           c1.takeDamage(c2);
-           c2.takeDamage(c1);
-           
+             if(c1.getLife() == 0 || c2.getLife() == 0){
+                i = 4;
+                 System.out.println();
+             }else{
+                System.out.println("");
+                c1.takeDamage(c2);
+                c2.takeDamage(c1);
+             }
         }    
        
         System.out.println("END OF FIGHT");

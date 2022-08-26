@@ -70,8 +70,6 @@ public class Champion {
       
       if (life <= 0){
           life = 0;
-      }else{
-          life = life;
       }
     }
     
