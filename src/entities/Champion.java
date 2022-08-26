@@ -19,6 +19,11 @@ public class Champion {
     public Champion(){
         
     }
+    
+     public Champion(String name, int life) {
+        this.name = name;
+        this.life = life;
+    }
 
     public Champion(String name, int life, int attack, int armor) {
         this.name = name;
@@ -56,11 +61,31 @@ public class Champion {
     }
     
     public void takeDamage(Champion other){
-       this.life = attack - armor;
+      int damage = other.getAttack() - armor;
+      if (other.getAttack() < armor){
+          life += -1;
+      }else{
+          life += -damage;
+      }
+      
+      if (life <= 0){
+          life = 0;
+      }else{
+          life = life;
+      }
     }
     
     public String status(){
-        return "Death";
+        if (life <= 0){
+            return name
+               +": "
+               + life
+               +" of life (Death)";
+        }else{
+            return name
+               +": "
+               + life
+               +" of life";
+            }
     }
-    
 }

@@ -21,7 +21,7 @@ public class Program {
         
         Scanner sc = new Scanner(System.in);
         
-        Champion c1, c2 = new Champion();
+        Champion champion;
         
         System.out.println("Enter data of First Champion: ");
         System.out.print("Name: ");
@@ -33,7 +33,7 @@ public class Program {
         System.out.print("Armor: ");
         int armor = sc.nextInt();
         sc.nextLine();
-        c1 = new Champion(name, life, attack, armor);
+        Champion c1 = new Champion(name, life, attack, armor);
         
         System.out.println();
         System.out.println("Enter data of Second Champion: ");
@@ -45,24 +45,31 @@ public class Program {
         attack = sc.nextInt();
         System.out.print("Armor: ");
         armor = sc.nextInt();
-        c2 = new Champion(name, life, attack, armor);
-        
-        System.out.println();
-        System.out.println("How many round would you like?" );
-        int round = sc.nextInt();
-        
-        System.out.println();
-       for(int i = 0; i < round; i++){
+        Champion c2 = new Champion(name, life, attack, armor);
+      
+       c1.takeDamage(c2);
+       c2.takeDamage(c1); 
+       
+       System.out.println();
+       System.out.print("How many round would you like? " );
+       int round = sc.nextInt();
+       
+       System.out.println();
+       for(int i = 1; i <= round; i++){
            System.out.println("Final Result round "+ i + ":");
-           System.out.println(c1.getName()+": "+ c1.takeDamage(c2) + " of life");
+           System.out.println(c1.status());
+           System.out.println(c2.status());
+           
+           System.out.println("");
+           c1.takeDamage(c2);
+           c2.takeDamage(c1);
+           
         }    
-            
-        
-                
-        
-        
-        
-        sc.close();
+       
+        System.out.println("END OF FIGHT");
+       
+       
+       sc.close();
         
     }
     
